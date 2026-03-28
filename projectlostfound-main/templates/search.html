@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card fade-in">
+  <h2>Search Items</h2>
+
+  <form method="POST" class="search-inline">
+    <input type="text" name="keyword" placeholder="Enter item name, description or location..." value="{{ query|default('') }}">
+    <button type="submit" class="btn primary">Search</button>
+  </form>
+
+  {% if results %}
+    <h3 style="margin-top:20px;">Results ({{ results|length }})</h3>
+    <ul class="card-list">
+      {% for item in results %}
+        <li class="small-card">
+          <div class="small-title">{{ item[1] }}</div>
+          <div class="small-desc">{{ item[2] }}</div>
+          <div class="small-meta">{{ item[3] }} • <span class="tag">{{ item[5] }}</span></div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    {% if query %}
+      <p class="muted">No results found for "<strong>{{ query }}</strong>"</p>
+    {% endif %}
+  {% endif %}
+</section>
+{% endblock %}

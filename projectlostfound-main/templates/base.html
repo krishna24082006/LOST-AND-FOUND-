@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lost & Found - Ambalika Institute (AITM Lucknow)</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="{{ url_for('static', filename='college_logo.jpg') }}" alt="College Logo" class="college-logo">
+        <div class="brand-text">
+          <div class="college-name">Ambalika Institute of Technology & Management</div>
+          <div class="college-sub">Lucknow</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('report') }}">Report Item</a>
+        <a href="{{ url_for('items') }}">All Items</a>
+        <a href="{{ url_for('search') }}">Search</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="main-inner">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      © 2025 Ambalika Institute of Technology & Management, Lucknow — Lost & Found Portal
+    </div>
+  </footer>
+</body>
+</html>

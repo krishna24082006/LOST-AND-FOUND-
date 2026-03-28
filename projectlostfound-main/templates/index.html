@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero card fade-in">
+  <div class="hero-left">
+    <h1>Lost & Found Portal</h1>
+    <p class="lead">Ambalika Institute of Technology & Management — Lucknow</p>
+
+    <form method="POST" class="search-form" aria-label="Search items">
+      <input name="query" type="search" placeholder="Search items by name, description or location..." value="{{ query|default('') }}">
+      <button type="submit" class="btn primary">Search</button>
+      <a href="{{ url_for('report') }}" class="btn ghost">Report an Item</a>
+    </form>
+  </div>
+
+  <div class="hero-right">
+    <h3>Recent reports</h3>
+    {% if results %}
+      <ul class="card-list">
+        {% for item in results %}
+          <li class="small-card">
+            <div class="small-title">{{ item[1] }}</div>
+            <div class="small-desc">{{ item[2]|truncate(90) }}</div>
+            <div class="small-meta">{{ item[3] }} • <span class="tag">{{ item[5] }}</span></div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="muted">No recent items. Be the first to report.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

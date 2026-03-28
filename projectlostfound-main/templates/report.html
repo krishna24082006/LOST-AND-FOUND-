@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card fade-in">
+  <h2>Report Lost / Found Item</h2>
+  <form method="POST" class="form-grid">
+    <div>
+      <label>Item name</label>
+      <input type="text" name="name" required placeholder="e.g., Laptop / Wallet">
+    </div>
+
+    <div>
+      <label>Location</label>
+      <input type="text" name="location" required placeholder="e.g., Library, Block A">
+    </div>
+
+    <div style="grid-column: 1 / -1;">
+      <label>Description</label>
+      <textarea name="description" rows="4" placeholder="Add details that help identify the item"></textarea>
+    </div>
+
+    <div>
+      <label>Contact (phone/email)</label>
+      <input type="text" name="contact" placeholder="Contact info (so finder/owner can connect)">
+    </div>
+
+    <div>
+      <label>Status</label>
+      <select name="status" required>
+        <option value="Lost">Lost</option>
+        <option value="Found">Found</option>
+      </select>
+    </div>
+
+    <div style="grid-column: 1 / -1; text-align: right;">
+      <button type="submit" class="btn primary">Submit Report</button>
+    </div>
+  </form>
+</section>
+{% endblock %}
